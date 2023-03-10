@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assestment-1</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </head>
+  <script>
+    $(document).ready(function () {
+      $("#btn-calculate").click(function () {
+        var date1 = $("#date1").val();
+        var date2 = $("#date2").val();
+        var diff = moment(date2).diff(moment(date1), "days");
+        var duration = moment.duration(diff, "days");
+        var days = duration.asDays();
+        var months = duration.asMonths();
+        var weeks = duration.asWeeks();
+        $("#result").html(
+          "The interval between " +
+            date1 +
+            " and " +
+            date2 +
+            " is " +
+            days +
+            " days, " +
+            weeks +
+            " weeks, and " +
+            months +
+            " months."
+        );
+      });
+    });
+  </script>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="date1">Date 1:</label>
+            <input type="date" class="form-control" id="date1" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="date2">Date 2:</label>
+            <input type="date" class="form-control" id="date2" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <button class="btn btn-primary" id="btn-calculate">Calculate</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div id="result"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
